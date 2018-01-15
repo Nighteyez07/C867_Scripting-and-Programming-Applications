@@ -36,7 +36,7 @@ int main() {
 		}
 
 		Degree theDegree;
-		if (tempHolder[8] == "NETWORKING") {
+		if (tempHolder[8] == "NETWORK") {
 			theDegree = NETWORKING;
 		}
 		else if (tempHolder[8] == "SECURITY") {
@@ -60,6 +60,8 @@ int main() {
 		classRoster.printDaysInCourse(classRoster.classRosterArray[i]->getStudentId());
 	}
 	cout << "\n";
+	classRoster.printByDegreeProgram(SOFTWARE);
+	cout << "\n";
 	classRoster.remove("A3");
 	classRoster.remove("A3");
 
@@ -72,7 +74,19 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 	
 	for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[i]); i++) {
 		if (classRosterArray[i] == nullptr) {
-			classRosterArray[i] = new Student(age, courseDays, studentID, emailAddress, firstName, lastName, degreeProgram);
+			if (degreeProgram == NETWORKING) {
+				classRosterArray[i] = new NetworkStudent(age, courseDays, studentID, emailAddress, firstName, lastName, degreeProgram);
+			}
+			else if (degreeProgram == SECURITY) {
+				classRosterArray[i] = new SecurityStudent(age, courseDays, studentID, emailAddress, firstName, lastName, degreeProgram);
+			}
+			else if (degreeProgram == SOFTWARE) {
+				classRosterArray[i] = new SoftwareStudent(age, courseDays, studentID, emailAddress, firstName, lastName, degreeProgram);
+			}
+			else {
+				classRosterArray[i] = new Student(age, courseDays, studentID, emailAddress, firstName, lastName, degreeProgram);
+			}
+			
 			break;//stop processing
 		}
 	}
@@ -82,6 +96,15 @@ void Roster::printAll()
 {
 	for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[i]); i++) {
 		classRosterArray[i]->print();
+	}
+}
+
+void Roster::printByDegreeProgram(int degreeProgram)
+{
+	for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[i]); i++) {
+		if (classRosterArray[i]->getDegreeProgram() == degreeProgram) {
+			classRosterArray[i]->print();
+		}
 	}
 }
 

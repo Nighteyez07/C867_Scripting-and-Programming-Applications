@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
-#include "student.h"
+#include "networkStudent.h"
+#include "securityStudent.h"
+#include "softwareStudent.h"
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #pragma once
 enum Degree {
-	NETWORKING,
-	OTHER,
 	SECURITY,
-	SOFTWARE
+	NETWORKING,
+	SOFTWARE,
+	OTHER
 };

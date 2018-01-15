@@ -1,8 +1,10 @@
+#ifndef Student_HEADER
+#define Student_HEADER
+
 #include <iostream>
 #include <string>
 #include "degree.h"
 using namespace std;
-
 
 class Student {
 	public:
@@ -32,5 +34,6 @@ class Student {
 		int Age, DaysInCourse[3];
 		string Email, FirstName, LastName, StudentId;
 		Degree DegreeType;
-		
 };
+
+#endif
